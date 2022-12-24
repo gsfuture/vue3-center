@@ -13,13 +13,21 @@
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="main-app"></div>
+    <div id="main-app">
+
+
+    </div>
     <!-- built files will be auto injected -->
 
-    <div id="example1" class="demo">
+    <div id="renderApp" class="demo">
         <p>使用双大括号的文本插值: {{ rawHtml }}</p>
         <p>使用 v-html 指令: <span v-html="rawHtml"></span></p>
+
+
+        <button-counter></button-counter>
     </div>
+
+
 
   </body>
 
@@ -34,7 +42,24 @@
           }
       }
 
-      Vue.createApp(RenderHtmlApp).mount('#example1')
+      const renderApp = Vue.createApp(RenderHtmlApp);
+
+
+      renderApp.component('button-counter', {
+          data() {
+              return {
+                  count: 0
+              }
+          },
+          template: `
+            <button @click="count++">
+              点了 {{ count }} 次！
+            </button>`
+      })
+
+      renderApp.mount('#renderApp')
+
+
   </script>
 
 
