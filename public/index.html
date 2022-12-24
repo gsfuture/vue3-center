@@ -29,6 +29,22 @@
 
 
 
+    <div id="childApp">
+        <site-name title="Google"></site-name>
+        <site-name title="Runoob"></site-name>
+        <site-name title="Taobao"></site-name>
+    </div>
+
+
+    <div id="dynamicApp">
+        <site-info
+                v-for="site in sites"
+                :id="site.id"
+                :title="site.title"
+        ></site-info>
+    </div>
+
+
   </body>
 
 
@@ -59,6 +75,42 @@
 
       renderApp.mount('#renderApp')
 
+
+
+      //子组件
+
+      const childApp = Vue.createApp({})
+
+      childApp.component('site-name', {
+          props: ['title'],
+          template: `<h4>{{ title }}</h4>`
+      })
+
+      childApp.mount('#childApp')
+
+
+      //dynamic props
+
+      const Site = {
+          data() {
+              return {
+                  sites: [
+                      { id: 1, title: 'Google' },
+                      { id: 22, title: 'Runoob' },
+                      { id: 3, title: 'Taobao' }
+                  ]
+              }
+          }
+      }
+
+      const dynamicApp = Vue.createApp(Site)
+
+      dynamicApp.component('site-info', {
+          props: ['id','title'],
+          template: `<h4>{{ id }} - {{ title }}</h4>`
+      })
+
+      dynamicApp.mount('#dynamicApp')
 
   </script>
 
