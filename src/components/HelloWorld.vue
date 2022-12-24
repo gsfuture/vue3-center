@@ -33,7 +33,8 @@
     <br>
     <HiVue name="Gan" hoppy="Birds" :age="age"></HiVue>
 
-
+    <p>计算后反转字符串: {{ reversedMessage }}</p>
+    <p>计算后反转字符串: {{ reversedMessage2() }}</p>
   </div>
 </template>
 
@@ -46,11 +47,24 @@ import HiVue from "../components/HiVue.vue";
     msg: String
   },
   components: {HiVue},
+  computed: { //computed 属性默认只有 getter ，不过在需要时你也可以提供一个 setter ：
+    // 计算属性的 getter
+    reversedMessage: function () {
+      // `this` 指向 vm 实例
+      return this.message.split('').reverse().join('')
+    }
+  },
+  methods: {
+    reversedMessage2: function () {
+      return this.message.split('').reverse().join('')
+    }
+  },
   data(){
     return{
       names:'Danny',
       ho:"cats",
       age:232,
+      message: 'RUNOOB!!'
     }
   },
 })
