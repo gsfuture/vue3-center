@@ -35,18 +35,21 @@
 
     <p>计算后反转字符串: {{ reversedMessage }}</p>
     <p>计算后反转字符串: {{ reversedMessage2() }}</p>
+
+    <WatchVue watchName="tomorrow"></WatchVue>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 import HiVue from "../components/HiVue.vue";
+import WatchVue from "../components/WatchVue.vue";
 
 @Options({
   props: {
     msg: String
   },
-  components: {HiVue},
+  components: {HiVue,WatchVue},
   computed: { //computed 属性默认只有 getter ，不过在需要时你也可以提供一个 setter ：
     // 计算属性的 getter
     reversedMessage: function () {
