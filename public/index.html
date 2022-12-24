@@ -6,12 +6,36 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
+      <script src="https://cdn.staticfile.org/vue/3.2.36/vue.global.min.js"></script>
+
   </head>
   <body>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app"></div>
+    <div id="main-app"></div>
     <!-- built files will be auto injected -->
+
+    <div id="example1" class="demo">
+        <p>使用双大括号的文本插值: {{ rawHtml }}</p>
+        <p>使用 v-html 指令: <span v-html="rawHtml"></span></p>
+    </div>
+
   </body>
+
+
+
+  <script>
+      const RenderHtmlApp = {
+          data() {
+              return {
+                  rawHtml: '<span style="color: red">这里会显示红色！</span>'
+              }
+          }
+      }
+
+      Vue.createApp(RenderHtmlApp).mount('#example1')
+  </script>
+
+
 </html>
