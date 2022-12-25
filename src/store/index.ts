@@ -1,13 +1,25 @@
 import {createStore} from 'vuex'
+import OtherType from "./states/index";
+import user from "./modules/user";
 
-interface State{
-    count:number,
+interface CommonState {
+    name: string;
+    age: number;
+    count: number;
+
     todo:any[];
 }
-export const store=createStore<State>({
+type states = CommonState & OtherType;
+
+// interface State{
+//
+// }
+export const store=createStore<states>({
     state(){
         return{
             count:1,
+            name:"张三",
+            age:100,
             todo:[{age:2},{age:3},{age:4}]
         }
     },
@@ -31,5 +43,9 @@ export const store=createStore<State>({
         getCount:(state:any)=>{
             return state.count;
         }
-    }
+    },
+    modules: {
+        user,
+    },
+
 })

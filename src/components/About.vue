@@ -12,6 +12,12 @@
   gArray
   <br/>
 
+  changeName of Modules<br/>
+  {{name1}}<br/>
+  <button @click="changeName">moduleChangeName</button>
+
+
+
 </template>
 
 <script lang="ts">
@@ -44,11 +50,25 @@ export default defineComponent({
     const gCount=store.getters.getCount
     console.log("----gCount",gCount);
 
+
+    ///module change name
+
+    const changeName = () => {
+      store.dispatch("user/changeName","gan");
+    };
+
+    const name1 = computed(() => {
+      return store.state.user.name1;
+    });
+
+
     return {
       // 返回的数据
       count,
       increment,
-      onSubmit
+      onSubmit,
+      name1,
+      changeName
     };
   },
 });
