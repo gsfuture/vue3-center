@@ -6,6 +6,12 @@
   {{ count }}
   <button @click="increment">增加</button>
 
+  <button type="primary" round @click="onSubmit">Primary</button>
+
+  <br/>
+  gArray
+  <br/>
+
 </template>
 
 <script lang="ts">
@@ -26,13 +32,23 @@ export default defineComponent({
       return store.state.count;
     });
     const increment = () => {
-      store.commit("increment");
+      store.commit("increment",10);
     };
+    const onSubmit = () => {
+      store.dispatch("incrementAction", 100);
+    };
+
+    const gArray=store.getters.getArray
+    console.log("gArray",JSON.stringify(gArray));
+
+    const gCount=store.getters.getCount
+    console.log("----gCount",gCount);
 
     return {
       // 返回的数据
       count,
-      increment
+      increment,
+      onSubmit
     };
   },
 });
