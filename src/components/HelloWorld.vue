@@ -37,6 +37,11 @@
     <p>计算后反转字符串: {{ reversedMessage2() }}</p>
 
     <WatchVue watchName="tomorrow"></WatchVue>
+
+    <input v-focus>
+
+    <div v-runoob="{ name: '菜鸟教程', url: 'www.runoob.com',color: 'green', text: '菜鸟教程!'  }"></div>
+
   </div>
 </template>
 
@@ -60,6 +65,24 @@ import WatchVue from "../components/WatchVue.vue";
   methods: {
     reversedMessage2: function () {
       return this.message.split('').reverse().join('')
+    }
+  },
+  directives: {
+    focus: {
+      // 指令的定义
+      mounted(el) {
+        el.focus()
+      }
+    },
+    runoob: function (el, binding, vnode) {
+
+      console.log(binding.value.name) // => "菜鸟教程"
+      console.log(binding.value.url) // => "www.runoob.com"
+      var s = JSON.stringify
+      el.innerHTML = s(binding.value)
+      el.style.backgroundColor = binding.value.color
+      console.log(vnode);
+
     }
   },
   data(){
