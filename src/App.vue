@@ -18,6 +18,8 @@
 
   <Mixin>123</Mixin>
 
+  <Composition></Composition>
+
 </template>
 
 <script lang="ts">
@@ -25,6 +27,7 @@ import { Options, Vue } from 'vue-class-component';
 import HelloWorld from './components/HelloWorld.vue';
 
 import Mixin from './components/Mixin.vue';
+import Composition from "./components/Composition.vue"
 
 
 @Options({
@@ -32,6 +35,7 @@ import Mixin from './components/Mixin.vue';
   components: {
     HelloWorld,
     Mixin,
+    Composition
   },
 })
 export default class App extends Vue {
