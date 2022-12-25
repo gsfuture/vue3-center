@@ -16,6 +16,7 @@
   <!-- 路由匹配到的组件将渲染在这里 -->
   <router-view></router-view>
 
+  <Mixin>123</Mixin>
 
 </template>
 
@@ -23,12 +24,21 @@
 import { Options, Vue } from 'vue-class-component';
 import HelloWorld from './components/HelloWorld.vue';
 
+import Mixin from './components/Mixin.vue';
+
+
 @Options({
+  myOption: 'hello!',
   components: {
     HelloWorld,
+    Mixin,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+
+
+
+}
 </script>
 
 <style>
