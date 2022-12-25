@@ -20,6 +20,10 @@
 
   <Composition></Composition>
 
+  <br/>
+  come on <br/>
+  <Parent></Parent>
+
 </template>
 
 <script lang="ts">
@@ -28,15 +32,25 @@ import HelloWorld from './components/HelloWorld.vue';
 
 import Mixin from './components/Mixin.vue';
 import Composition from "./components/Composition.vue"
-
+import Parent from "./components/Parent.vue"
+import { provide } from 'vue'
 
 @Options({
   myOption: 'hello!',
   components: {
     HelloWorld,
     Mixin,
-    Composition
+    Composition,
+    Parent
   },
+
+  setup(){
+
+    let injectName = 'grand柴柴老师'
+    // 使用provide配置项注入数据 key - value
+    provide('injectName', injectName)
+
+  }
 })
 export default class App extends Vue {
 

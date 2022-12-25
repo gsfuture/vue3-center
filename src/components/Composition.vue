@@ -41,6 +41,10 @@
   <button @click="deepName = 'Gray'">change deep name</button>
   <button @click="deepInfo.deepAge++">change deep age</button>
 
+  <!--- ref demo -->
+  <h1 ref="h1Ref">我是普通dom标签</h1>
+  <ref-comoonent ref="comRef">com com Ref</ref-comoonent>
+
 
 </template>
 
@@ -48,6 +52,7 @@
 
 import { ref,computed,onMounted,watch } from 'vue'
 import { reactive,toRefs } from 'vue'
+
 
 function useShow() {
   const showDivFlag = ref(true)
@@ -153,8 +158,18 @@ export default {
     })
 
     console.log('setup执行了')
+
+    //ref demo
+    const h1Ref = ref(null)
+    const comRef = ref(null)
+    onMounted(() => {
+      console.log(h1Ref.value)
+      console.log(comRef.value)
+    })
+
+
     return { ...toRefs(state),state, showDivFlag, show, hide, fontColor, changeRed, changeBlue,
-      list, filterList, changeList,age2,...toRefs(deepState)
+      list, filterList, changeList,age2,...toRefs(deepState),h1Ref,comRef
     }
   },
   beforeCreate() {
