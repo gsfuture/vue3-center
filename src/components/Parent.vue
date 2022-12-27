@@ -2,7 +2,7 @@
   parent com
   <button @click="changeName">change inject name</button>
   <br/>
-  <ParentChild :name="name" @get-msg="getMsg">parent</ParentChild>
+  <ParentChild :name="name" @get-msg="getMsg" :wallet="wallet">parent</ParentChild>
 
 
 
@@ -12,6 +12,7 @@
 
 import { ref,provide } from 'vue'
 import ParentChild from './ParentChild.vue'
+import {Wallet} from "@/struct/Wallet";
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
@@ -34,8 +35,15 @@ export default {
     // 使用provide配置项注入数据 key - value
     provide('injectFatherName', injectFatherName)
 
+    let ins = new Wallet();
+    ins.chainId = 1234;
+    ins.walletAddress = "0x1231423";
+    const wallet = ref({});
+    wallet.value = ins;
+
     return {
       name,
+      wallet,
       getMsg,
       changeName
     }
