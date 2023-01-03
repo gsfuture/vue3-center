@@ -7,6 +7,7 @@
   <router-link to="/home">Helloworld</router-link><br/>
   <router-link to="/about">about</router-link><br/>
   <router-link to="/user/lczmx">WatchVue</router-link><br/>
+  <router-link to="/dynamic">Dynamic</router-link><br/>
 
   <!-- 带查询参数，下面的结果为 /about?plan=private -->
   <router-link :to="{ path: '/about', query: { plan: 'private' }}">AboutParams</router-link><br/>
